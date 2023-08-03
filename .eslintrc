@@ -1,0 +1,12 @@
+{
+  "parser": "@babel/eslint-parser",
+  "plugins": [],
+  "extends": ["eslint:recommended", "prettier"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "webextensions": true,
+    "es6": true
+  },
+  "rules": {}
+}

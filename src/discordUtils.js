@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2021-
- * FILE DESCRIPTION
+ * Utility functions for Discord.
  */
 
 import { getLastTokenizedItem } from './stringUtils';

@@ -1,3 +1,8 @@
+/**
+ * Copyright (c) 2021-
+ * Utility functions for Node.js.
+ */
+
 import { exec } from 'child_process';
 
 // import dotenv from 'dotenv';

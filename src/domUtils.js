@@ -4,7 +4,7 @@
  */
 
 import { sleep } from './promiseUtils';
-import { random } from './numberUtils';
+import { randomInt } from './numberUtils';
 
 export async function hasTextContent(text, selector, options) {
   return getElementByText(text, selector, options) !== null;
@@ -88,8 +88,8 @@ export async function simulateClick(elem, deltaX = 5, deltaY = 5) {
   const plusOrMinusX = Math.random() < 0.5 ? -1 : 1;
   const plusOrMinusY = Math.random() < 0.5 ? -1 : 1;
   const box = elem.getBoundingClientRect();
-  const x = box.left + (box.right - box.left) / 2 + random(1, deltaX) * plusOrMinusX;
-  const y = box.top + (box.bottom - box.top) / 2 + random(1, deltaY) * plusOrMinusY;
+  const x = box.left + (box.right - box.left) / 2 + randomInt(1, deltaX) * plusOrMinusX;
+  const y = box.top + (box.bottom - box.top) / 2 + randomInt(1, deltaY) * plusOrMinusY;
 
   simulateMouseEvent(elem, 'mousedown', x, y);
   await sleep(1);

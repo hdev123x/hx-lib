@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2021-
- * FILE DESCRIPTION
+ * Utility functions for Google Chrome browser extension.
  */
 
 export function getStorageData() {
@@ -75,25 +75,6 @@ export async function tabExists(tabId) {
     return true;
   } catch (e) {
     return false;
-  }
-}
-
-export async function removeTab(tabId) {
-  console.log('removeTab, tabId:', tabId);
-  try {
-    if (!(await tabExists(tabId))) {
-      console.log('Skip already closed tab:', tabId);
-      return;
-    }
-    const tab = await chrome.tabs.get(parseInt(tabId));
-    if (tab) {
-      console.log('remove tab...', tab);
-      chrome.tabs.remove(tabId, () => console.log(`close tab ${tabId}`));
-    } else {
-      console.log(`skip close tab ${tabId}`);
-    }
-  } catch (e) {
-    console.log('removeTab error:', tabId, e.message);
   }
 }
 
@@ -258,6 +239,25 @@ function isOldPendingRequestChecker(obj, lifetimeSecs) {
 }
 
 // WORKER FUNCS -------------------------------------------------------------------
+
+export async function removeTab(tabId) {
+  console.log('removeTab, tabId:', tabId);
+  try {
+    if (!(await tabExists(tabId))) {
+      console.log('Skip already closed tab:', tabId);
+      return;
+    }
+    const tab = await chrome.tabs.get(parseInt(tabId));
+    if (tab) {
+      console.log('remove tab...', tab);
+      chrome.tabs.remove(tabId, () => console.log(`close tab ${tabId}`));
+    } else {
+      console.log(`skip close tab ${tabId}`);
+    }
+  } catch (e) {
+    console.log('removeTab error:', tabId, e.message);
+  }
+}
 
 export async function getTabsToRight(sender) {
   console.log('getTabsToRight');

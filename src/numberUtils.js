@@ -3,19 +3,34 @@
  * FILE DESCRIPTION
  */
 
-export function random(min = null, max = null) {
-  if (min !== null && max != null) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  } else {
-    return Math.random;
-  }
+// todo: rename random() -> randomInt()
+export function randomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-export const isNumber = (n) => typeof n === 'number';
+export function randomFloat() {
+  return Math.random();
+}
 
-export function round(num, decimals) {
+export function isNumber(n) {
+  return typeof n === 'number';
+}
+
+export function isInteger(n) {
+  return Number.isSafeInteger(n);
+  // return n === +n && n === (n | 0);
+}
+
+export function isFloat(n) {
+  return isNumber(n) && !isInteger(n);
+  // return n === +n && n !== (n | 0);
+}
+
+export function round(n, decimals) {
   // Source: https://stackoverflow.com/questions/11832914/how-to-round-to-at-most-2-decimal-places-if-necessary
-  let n = num;
-  n = +n.toFixed(decimals);
-  return n;
+  let roundN = n;
+  roundN = +roundN.toFixed(decimals);
+  return roundN;
 }

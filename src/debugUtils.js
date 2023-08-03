@@ -21,16 +21,11 @@ export function createLogger(logLevel = null) {
 }
 
 export function createLogLevelArg(url = null) {
-  const href = url || location?.href?.toLowerCase();
-  if (href.includes('hxlog=debug')) {
-    return 'hxlog=debug';
-  }
-  if (href.includes('hxlog=trace')) {
-    return 'hxlog=trace';
-  }
-  return '';
+  const logLevel = getLogLevelFromURL(url);
+  return logLevel ? `hxlog=${logLevel}` : '';
 }
 
+// todo: rename to getLogLevel
 function getLogLevelFromURL(url = null) {
   const href = url || location?.href?.toLowerCase();
   if (href.includes('hxlog=debug')) {

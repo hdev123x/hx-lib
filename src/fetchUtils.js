@@ -7,6 +7,7 @@ import { sleep } from './promiseUtils';
 
 const DEFAULT_RETRY_AFTER_SECS = 30;
 
+// todo: add timeout handling!
 /**
  * @returns { data: json | text, response: stream, ok: boolean, error: number | json }
  */

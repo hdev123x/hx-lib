@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2021-
- * FILE DESCRIPTION
+ * Utility functions for Twitter.
  */
 
 import { getSearchParam } from './webUtils';

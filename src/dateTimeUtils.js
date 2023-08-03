@@ -19,9 +19,10 @@ export function isToday(someDate) {
 }
 
 export function millisecondsAhead(ms, date = null) {
-  const realDate = date ?? new Date();
-  return realDate.getTime() + ms;
+  return (date ?? new Date()).getTime() + ms;
 }
+
+// MONTHS
 
 export function convertTextToMonthNum(text) {
   if (!text) {
@@ -80,6 +81,8 @@ export function convertMonthNumToText(monthNum) {
   }
 }
 
+// DATE ARITHMETIC
+
 export function addToDate(date, { days = 0, hours = 0, minutes = 0, seconds = 0, ms = 0 }) {
   const newDate = new Date(date);
   const secondsToAdd = (days ? days * 24 * 60 * 60 : 0) + (hours ? hours * 60 * 60 : 0) + (minutes ? minutes * 60 : 0) + (seconds ?? 0);
@@ -87,20 +90,22 @@ export function addToDate(date, { days = 0, hours = 0, minutes = 0, seconds = 0,
   return new Date(newDate.getTime() + ms);
 }
 
+// BETWEEN DATES
+
 export function daysBetween(date1, date2) {
-  return betweenDates(date1, date2, 24 * 60 * 60 * 1000);
+  return betweenDates(date1, date2, ONE_DAY);
 }
 
 export function hoursBetween(date1, date2) {
-  return betweenDates(date1, date2, 1 * 60 * 60 * 1000);
+  return betweenDates(date1, date2, ONE_HOUR);
 }
 
 export function minutesBetween(date1, date2) {
-  return betweenDates(date1, date2, 1 * 60 * 1000);
+  return betweenDates(date1, date2, ONE_MINUTE);
 }
 
 export function secondsBetween(date1, date2) {
-  return betweenDates(date1, date2, 1 * 1000);
+  return betweenDates(date1, date2, ONE_SECOND);
 }
 
 export function millisecondsBetween(date1, date2) {
@@ -112,9 +117,7 @@ function betweenDates(date1, date2, base) {
   return Math.round(Math.abs((date1 - date2) / base));
 }
 
-export function dateLogStr() {
-  return new Date().toISOString();
-}
+// TIMESTAMP
 
 export function timestampToISOString(val, errStr = 'null') {
   return typeof val !== 'number' ? errStr : new Date(val).toISOString();
@@ -130,4 +133,10 @@ export function timestampToLocaleDateString(val, errStr = 'null', locale = null)
 
 export function timestampToLocaleTimeString(val, errStr = 'null', locale = null, options = {}) {
   return typeof val !== 'number' ? errStr : new Date(val).toLocaleTimeString(locale || undefined, options);
+}
+
+// MISC
+
+export function dateLogStr() {
+  return new Date().toISOString();
 }

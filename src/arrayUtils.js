@@ -3,26 +3,29 @@
  * FILE DESCRIPTION
  */
 
-export const range = (start, stop, step = 1) => Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + i * step);
-
-export function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
+/**
+ * @desc Merge arrays and remove duplicate items.
+ * @param  {...Array<*>} arrays One or many arrays
+ * @returns {Array<*>}
+ */
+export function noDuplicates(...arrays) {
+  return noDuplicatesByObject([...arrays].flat());
+  // return [...new Set([...arr].flat())];
 }
 
-export function noDuplicates(...arr) {
-  return [...new Set([...arr].flat())];
+/**
+ * @desc Remove items in array of objects where object <key> is duplicated.
+ * @param  {Array<object>} array Array of object items
+ * @param  {string} key Object key name
+ * @returns {Array<object>}
+ */
+export function noDuplicatesByKey(array, key) {
+  const idKey = (item) => item[key];
+  return removeDuplicatesByKey(array, idKey);
 }
 
-export function noDuplicatesByKey(arr, keyName) {
-  const idKey = (item) => item[keyName];
-  return removeDuplicatesByKey(arr, idKey);
-}
-
-export function noDuplicatesByObject(arr) {
+// todo: replace noDuplicatesByObject() with new noDuplicates()
+function noDuplicatesByObject(arr) {
   const idKey = (item) => JSON.stringify(item);
   return removeDuplicatesByKey(arr, idKey);
 }
@@ -32,7 +35,8 @@ function removeDuplicatesByKey(inputArray, keyFunction) {
   const obj = {};
   inputArray.forEach((item) => {
     let key = keyFunction(item);
-    if (!obj[key]) {
+    // undefined key means key is missing and array item should be included!
+    if (key === undefined || !obj[key]) {
       unique.push(item);
       obj[key] = item;
     }
@@ -54,3 +58,13 @@ export function removeDupsFromArray(arr) {
   });
 }
 */
+
+export const range = (start, stop, step = 1) => Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + i * step);
+
+export function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}

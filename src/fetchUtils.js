@@ -3,7 +3,7 @@
  * FILE DESCRIPTION
  */
 
-import { sleep } from './promiseUtils';
+import { sleep } from './promiseUtils.js';
 
 const DEFAULT_RETRY_AFTER_SECS = 30;
 

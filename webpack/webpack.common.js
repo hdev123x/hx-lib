@@ -22,13 +22,18 @@ module.exports = {
       fs: false,
       tls: false,
       net: false,
+      child_process: false,
       stream: require.resolve('readable-stream'),
     },
   },
   output: {
-    filename: '[name].js',
+    filename: 'hx-lib.js',
     path: path.resolve(__dirname, '../', 'dist'),
     clean: true,
+    library: {
+      name: 'hxLib',
+      type: 'umd',
+    },
   },
   plugins: [
     new ESLintPlugin({

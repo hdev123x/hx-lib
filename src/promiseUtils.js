@@ -3,7 +3,7 @@
  * FILE DESCRIPTION
  */
 
-import { randomInt } from './numberUtils';
+import { randomInt } from './numberUtils.js';
 
 export function sleep(min, max = null, multiplier = null) {
   return sleepMin(min, max, multiplier);

@@ -3,7 +3,7 @@
  * Utility functions for Twitter.
  */
 
-import { getSearchParam } from './webUtils';
+import { getSearchParam } from './webUtils.js';
 
 export function extractTwitterHandle(url) {
   if (!url) {

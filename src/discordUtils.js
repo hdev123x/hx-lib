@@ -3,7 +3,7 @@
  * Utility functions for Discord.
  */
 
-import { getLastTokenizedItem } from './stringUtils';
+import { getLastTokenizedItem } from './stringUtils.js';
 
 export function extractDiscordHandle(url) {
   return !url ? '' : getLastTokenizedItem(url, '/');

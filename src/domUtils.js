@@ -3,8 +3,8 @@
  * FILE DESCRIPTION
  */
 
-import { sleep } from './promiseUtils';
-import { randomInt } from './numberUtils';
+import { sleep } from './promiseUtils.js';
+import { randomInt } from './numberUtils.js';
 
 export async function hasTextContent(text, selector, options) {
   return getElementByText(text, selector, options) !== null;

@@ -2,8 +2,7 @@
   "name": "hx-lib",
   "version": "1.0.0",
   "description": "Hx Library Functions",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/lib.js",
   "scripts": {
     "start": "webpack --watch --config webpack/webpack.dev.js",
     "build": "webpack --config webpack/webpack.prod.js",

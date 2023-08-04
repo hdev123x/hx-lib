@@ -27,9 +27,10 @@ module.exports = {
     },
   },
   output: {
-    filename: 'hx-lib.js',
+    filename: 'lib.js',
     path: path.resolve(__dirname, '../', 'dist'),
     clean: true,
+    globalObject: 'this',
     library: {
       name: 'hxLib',
       type: 'umd',
